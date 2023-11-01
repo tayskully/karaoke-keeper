@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutation';
 import { react } from 'react'
 import Auth from '../utils/auth';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
@@ -35,10 +35,9 @@ function Signup () {
     <Form onSubmit={handleFormSubmit}>
         <Form.Field>
             <label>Username</label>
-            <input placeholder='Username'
-            name='Username'
-            type='Username'
-            id='Username'
+            <input placeholder='username'
+            name="username"
+            id="username"
             onChange={handleChange}
             />
         </Form.Field>
