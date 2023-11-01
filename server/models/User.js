@@ -19,6 +19,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  songs: [
+    {
+      type: String
+    }
+  ]
+
+  
+
 });
 
 userSchema.pre("save", async function (next) {

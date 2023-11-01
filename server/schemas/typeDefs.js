@@ -1,11 +1,20 @@
 const typeDefs = `
-  type User {
-    _id: ID
-    username: String
-    email: String
-    password: String
-  }
+type User {
+  _id: ID
+  username: String
+  email: String
+  password: String
+  songs: [Song]
+}
 
+type Song {
+  _id: ID
+  title: String
+  artist: String
+  lyrics: String
+  category: String
+  notes: [String]
+}
   type Auth {
     token: ID!
     user: User
