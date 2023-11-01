@@ -42,26 +42,26 @@ const resolvers = {
 
       return { token, user };
     },
-  },
 
-  addSong: async (parent, { song }, context) => {
-    if (context.user) {
-      const song = await Song.create({
-        title,
-        artist,
-        lyrics,
-        category,
-      });
+    addSong: async (parent, { song }, context) => {
+      if (context.user) {
+        const song = await Song.create({
+          title,
+          artist,
+          lyrics,
+          category,
+        });
 
-      await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $addToSet: { songs: song._id } }
-      );
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { songs: song._id } }
+        );
 
-      return song;
-    }
-    throw AuthenticationError;
-    ("You need to be logged in!");
+        return song;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
   },
 };
 

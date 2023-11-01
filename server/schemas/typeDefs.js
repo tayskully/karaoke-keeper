@@ -23,13 +23,16 @@ type Song {
     users: [User]
     user(username: String!): User
     me: User
-    songLyrics (song: String): Song
+    songs(song: String): Song
+
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addSong(title: String!, artist: String, lyrics: String, category: String): Song
   }
+
 
 `;
 module.exports = typeDefs;
