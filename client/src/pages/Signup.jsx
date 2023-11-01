@@ -40,17 +40,27 @@ function Signup () {
             type='Username'
             id='Username'
             onChange={handleChange}
-             />
+            />
         </Form.Field>
         <Form.Field>
             <label>Email</label>
-            <input placeholder='Email' />
+            <input placeholder='youremail@test.com'
+            name="email"
+            type="email"
+            id="email"
+            onChange={handleChange}
+            />
         </Form.Field>
         <Form.Field>
             <label>Password</label>
-            <input placeholder='Password' />
+            <input placeholder='********'
+            name="password"
+            type="password"
+            id="pwd"
+            onChange={handleChange}
+            />
         </Form.Field>
-        <Button type='submit'>Submit</Button>
+        <Button type='submit'>SignUp</Button>
     </Form>
 )
 
