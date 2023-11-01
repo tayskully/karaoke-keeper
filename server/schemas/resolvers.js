@@ -9,6 +9,9 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    users: async () => {
+      return User.find();
+    },
   },
 
   Mutation: {
