@@ -5,6 +5,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import logo from "/kk-logo.png";
 import "./App.css";
 
@@ -32,7 +33,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <>
       <div>
         <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
           <img
@@ -44,11 +45,11 @@ function App() {
         </a>
       </div>
       <h1>Karaoke Keeper</h1>
-      <div className="card"></div>
+      <ApolloProvider client={client}>
+        <div className="card"></div>
       </ApolloProvider>
+    </>
   );
 }
-
-//add pages
 
 export default App;
