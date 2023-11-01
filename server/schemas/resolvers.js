@@ -14,8 +14,13 @@ const resolvers = {
       return User.find();
     },
     songs: async (_, { song }) => {
-      const lyrics = await getSongLyrics(song);
-      return { title: song, lyrics: lyrics };
+      const songData = await getSongLyrics(song);
+      return {
+        title: songData.title,
+        artist: songData.artist,
+        image: songData.image,
+        lyrics: songData.lyrics,
+      };
     },
   },
 

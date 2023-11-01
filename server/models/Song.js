@@ -10,10 +10,13 @@ const songSchema = new Schema({
     type: String,
     required: true,
   },
-  lyrics: {
+  category: {
     type: String,
   },
-  category: {
+  image: {
+    type: String,
+  },
+  lyrics: {
     type: String,
   },
   notes: [

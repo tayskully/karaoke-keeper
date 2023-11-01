@@ -11,6 +11,7 @@ type Song {
   _id: ID
   title: String
   artist: String
+  image: String
   lyrics: String
   category: String
   notes: [String]
