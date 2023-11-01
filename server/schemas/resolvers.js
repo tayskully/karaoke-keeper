@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Song } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const { getSongLyrics } = require("../utils/song");
 
@@ -13,8 +13,7 @@ const resolvers = {
     users: async () => {
       return User.find();
     },
-
-    songLyrics: async (_, { song }) => {
+    songs: async (_, { song }) => {
       const lyrics = await getSongLyrics(song);
       return { title: song, lyrics: lyrics };
     },
@@ -43,6 +42,26 @@ const resolvers = {
 
       return { token, user };
     },
+  },
+
+  addSong: async (parent, { song }, context) => {
+    if (context.user) {
+      const song = await Song.create({
+        title,
+        artist,
+        lyrics,
+        category,
+      });
+
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { songs: song._id } }
+      );
+
+      return song;
+    }
+    throw AuthenticationError;
+    ("You need to be logged in!");
   },
 };
 
