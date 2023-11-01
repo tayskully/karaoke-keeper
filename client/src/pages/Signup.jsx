@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { react } from 'react'
 import Auth from '../utils/auth';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 function Signup () {
   const [formState, setFormState] = useState({ email: '', password: '' });
