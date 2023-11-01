@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import 'semantic-ui-css/semantic.min.css'
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import logo from "/kk-logo.png";
 import "./App.css";
+import { Outlet } from 'react-router-dom';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -47,6 +49,7 @@ function App() {
       <h1>Karaoke Keeper</h1>
       <ApolloProvider client={client}>
         <div className="card"></div>
+        <Outlet />
       </ApolloProvider>
     </>
   );
