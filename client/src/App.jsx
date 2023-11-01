@@ -1,21 +1,54 @@
-import { useState } from "react";
+// import { useState } from "react";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
 import logo from "/kk-logo.png";
 import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0);
+// Construct our main GraphQL API endpoint
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("id_token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
+function App() {
   return (
-    <>
+    <ApolloProvider client={client}>
       <div>
         <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
-          <img src={logo} width="200px" className="logo" alt="karaoke keeper logo" />
+          <img
+            src={logo}
+            width="200px"
+            className="logo"
+            alt="karaoke keeper logo"
+          />
         </a>
       </div>
       <h1>Karaoke Keeper</h1>
       <div className="card"></div>
-    </>
+      </ApolloProvider>
   );
 }
+
+//add pages
 
 export default App;
