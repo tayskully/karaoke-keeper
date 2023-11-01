@@ -31,6 +31,21 @@ function Signup () {
     });
   };
 
+  return (
+    <Form onSubmit={handleFormSubmit}>
+        
+        <Form.Field>
+            <label>Email</label>
+            <input placeholder='Email' />
+        </Form.Field>
+        <Form.Field>
+            <label>Password</label>
+            <input placeholder='Password' />
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+    </Form>
+)
+
 }
 
 export default Signup;
