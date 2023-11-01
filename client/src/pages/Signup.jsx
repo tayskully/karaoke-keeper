@@ -33,7 +33,15 @@ function Signup () {
 
   return (
     <Form onSubmit={handleFormSubmit}>
-        
+        <Form.Field>
+            <label>Username</label>
+            <input placeholder='Username'
+            name='Username'
+            type='Username'
+            id='Username'
+            onChange={handleChange}
+             />
+        </Form.Field>
         <Form.Field>
             <label>Email</label>
             <input placeholder='Email' />
