@@ -23,6 +23,7 @@ type Song {
     users: [User]
     user(username: String!): User
     me: User
+    songLyrics (song: String): Song
   }
 
   type Mutation {

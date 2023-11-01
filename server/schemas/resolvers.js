@@ -1,5 +1,6 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const { getSongLyrics } = require("../utils/song");
 
 const resolvers = {
   Query: {
@@ -11,6 +12,11 @@ const resolvers = {
     },
     users: async () => {
       return User.find();
+    },
+
+    songLyrics: async (_, { song }) => {
+      const lyrics = await getSongLyrics(song);
+      return { title: song, lyrics: lyrics };
     },
   },
 
