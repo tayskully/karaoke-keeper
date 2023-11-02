@@ -1,7 +1,14 @@
 import { Icon, Form } from "semantic-ui-react";
 import SongCard from "../components/SongCard";
 
+
 const Home = () => {
+
+  // const [formState, setFormState] = useState({
+  //   thoughtText: '',
+  //   thoughtAuthor: '',
+  // });
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -16,14 +23,15 @@ const Home = () => {
   return (
     <main>
       <Form.Input
-      inverted
+        inverted
         icon={<Icon circular link search />}
         onSubmit={handleFormSubmit}
         name="search"
+        value={searchInput}
         placeholder="Search for a song..."
       />
-<div className="container">
-      <SongCard />
+      <div className="container">
+        <SongCard />
       </div>
 
       {/* <div>
