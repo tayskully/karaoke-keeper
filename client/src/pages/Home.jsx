@@ -3,6 +3,7 @@ import SongCard from "../components/SongCard";
 import { useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCH_SONGS } from "../utils/queries";
+import { useEffect } from "react";
 
 const Home = () => {
   const [formState, setFormState] = useState({
@@ -27,6 +28,10 @@ const Home = () => {
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
+  
+  useEffect(() => {
+    searchSong({ variables: { song: "random" } });
+  }, []);
 
   return (
     <div>
@@ -59,4 +64,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;
