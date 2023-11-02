@@ -10,6 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 import logo from "/kk-logo.png";
 import "./App.css";
 import { Outlet } from "react-router-dom";
+import Nav from './components/Nav/index';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -49,6 +50,7 @@ function App() {
       <h1 className="karaoke">Karaoke Keeper</h1>
       <ApolloProvider client={client}>
         <div className="card"></div>
+        <Nav />
         <Outlet />
       </ApolloProvider>
     </>
