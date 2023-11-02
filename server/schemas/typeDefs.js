@@ -24,7 +24,7 @@ type Song {
     users: [User]
     user(username: String!): User
     me: User
-    songs(song: String): Song
+    songs(song: String): [Song]
 
   }
 

@@ -1,10 +1,9 @@
 module.exports = {
-  getSongLyrics: async (song) => {
+  getSongs: async (song) => {
     const Genius = require("genius-lyrics");
     const Client = new Genius.Client(
       "oF_IZuPFe7vq4ap8urx7ACfdzJTkJ3NfL9312cubJTHMHS-OayePj_TbHXq-5jsx"
     );
-
     // const init = async () => {
     const searches = await Client.songs.search(song);
 
@@ -17,8 +16,11 @@ module.exports = {
     // });
 
     const songSearch = searches.map((songData) => {
-      console.log({ title: songSearch.title, artist: songSearch.artist.name });
-      return { title: songSearch.title, artist: songSearch.artist.name };
+      console.log({
+        title: songData.title,
+        artist: songData.artist.name,
+      });
+      return { title: songData.title, artist: songData.artist.name };
     });
 
     // Pick first one
@@ -31,10 +33,10 @@ module.exports = {
     // console.log("About the Song:\n", multipleSongs, "\n");
 
     // Ok lets get the lyrics
-    const lyrics = await songData.lyrics();
-    const title = songData.title;
-    const image = songData.image;
-    const artist = songData.artist.name;
+    // const lyrics = await songData.lyrics();
+    // const title = songData.title;
+    // const image = songData.image;
+    // const artist = songData.artist.name;
 
     // console.log(
     //   "\n",
@@ -46,7 +48,9 @@ module.exports = {
     //   "\n",
     //   lyrics
     // );
-    // console.log(song);
+    console.log(songSearch);
+
+    //returns the array of songs from search term
     return songSearch;
     // };
 

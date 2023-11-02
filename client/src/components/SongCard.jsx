@@ -1,5 +1,5 @@
 import { Button, Card, Image } from "semantic-ui-react";
-// import { getSongLyrics } from "../../../server/utils/song";
+// import { getSongs } from "../../../server/utils/song";
 
 export default function SongCard() {
   return (
@@ -19,7 +19,7 @@ export default function SongCard() {
               GO-TO Song
             </Button>
             <Button basic color="pink">
-              WANT-TO sing
+              WANT-TO Sing
             </Button>
           </div>
         </Card.Content>
