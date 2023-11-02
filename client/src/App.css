@@ -36,3 +36,17 @@ a:hover {
   color: rgba(255, 255, 255, 1);
   box-shadow: 0 5px 15px rgba(19, 252, 19, 0.4);
 }
+
+.ui.card>.content,
+.ui.card>.header,
+.ui.card>.meta,
+.ui.cards>.card>.content {
+  color:rgb(255, 255, 255);
+  background-color: #000000;
+}
+
+.ui.card>.content.extra,
+.ui.cards>.card>.content.extra {
+  background-color: #000000;
+  color: white;
+}
