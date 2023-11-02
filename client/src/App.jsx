@@ -7,7 +7,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import logo from "/kk-logo.png";
+import logo from "/kk-logo.svg";
 import "./App.css";
 import { Outlet } from "react-router-dom";
 

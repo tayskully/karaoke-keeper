@@ -31,6 +31,7 @@ const Home = () => {
   return (
     <div>
       <div className="formContainer">
+      <h2>Let's Sing!</h2>
         <Form onSubmit={handleFormSubmit}>
           <Form.Input
             className="formInput"
@@ -38,7 +39,7 @@ const Home = () => {
             onChange={handleChange}
             name="song"
             value={formState.song}
-            placeholder="Search for a song..."
+            placeholder="Search for a song or artist..."
           />
         </Form>
       </div>

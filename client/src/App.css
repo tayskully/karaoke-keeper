@@ -34,6 +34,9 @@ header {
       0 0 40px #b401fb, 0 0 50px #b401fb, 0 0 60px #b401fb, 0 0 70px #b401fb;
   }
 }
+h2 {
+  font-family:"Warnes", cursive;
+}
 
 a {
   color: hotpink;
@@ -74,7 +77,7 @@ main {
 
 
 .formContainer {
-  /* display: flex;
-  justify-content:center; */
+  /* display: flex; */
+  justify-content:center;
   padding: 100px;
 }
