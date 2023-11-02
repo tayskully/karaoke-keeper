@@ -11,15 +11,12 @@ export const QUERY_ME = gql`
 `;
 
 export const SEARCH_SONGS = gql`
-  query getSongs {
-    songs {
-      _id
-      title
+  query Query($song: String) {
+    songs(song: $song) {
       artist
-      image
       lyrics
-      category
-      notes
+      title
+      image
     }
   }
 `;

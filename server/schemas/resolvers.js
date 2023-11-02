@@ -1,6 +1,6 @@
 const { User, Song } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const { getSongLyrics } = require("../utils/song");
+const { getSongs } = require("../utils/song");
 
 const resolvers = {
   Query: {
@@ -18,7 +18,7 @@ const resolvers = {
       console.log(songData);
       return songData;
     },
-    
+
     //get one song for lyric page
     song: async (_, { songId }) => {
       const songData = await Song.findOne({ _id: songId });
