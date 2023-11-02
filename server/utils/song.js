@@ -7,24 +7,17 @@ module.exports = {
     // const init = async () => {
     const searches = await Client.songs.search(song);
 
-    // for (const songData of searches) {
-    //   console.log(songData.title, songData.artist.name);}
-
-    // searches.forEach((songData) => {
-    //   console.log(songData.title);
-    //   return songData.title;
-    // });
-
     const songSearch = searches.map((songData) => {
       console.log({
         title: songData.title,
         artist: songData.artist.name,
+        image: songData.image
       });
-      return { title: songData.title, artist: songData.artist.name };
+      return { title: songData.title, artist: songData.artist.name, image: songData.image };
     });
 
     // Pick first one
-    // console.log(searches);
+    
     const firstSong = searches[0];
     const secondSong = searches[1];
     const multipleSongs = searches[(0, 1, 2, 3, 4)];
@@ -56,4 +49,6 @@ module.exports = {
 
     // init();
   },
+
+  
 };
