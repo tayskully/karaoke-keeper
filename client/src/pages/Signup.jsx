@@ -40,6 +40,7 @@ function Signup() {
   };
 
   return (
+    <div className="sign-up-form">
     <Form onSubmit={handleFormSubmit}>
       <Form.Field>
         <label>Username</label>
@@ -70,8 +71,9 @@ function Signup() {
           onChange={handleChange}
         />
       </Form.Field>
-      <Button type="submit">SignUp</Button>
+      <Button basic color='green' content='Green' type="submit">SignUp</Button>
     </Form>
+    </div>
   );
 }
 
