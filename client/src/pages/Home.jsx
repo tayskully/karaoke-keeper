@@ -36,11 +36,24 @@ const Home = () => {
         onSubmit={handleFormSubmit}
         onChange={handleChange}
         name="search"
-        value={formState.song}
+        // value={formState.song}
         placeholder="Search for a song..."
       />
       <div className="container">
-        <SongCard />
+        <SongCard 
+        song = {{
+          title: "thriller",
+          artist: "michael jackson",
+          lyrics: "blah blah",
+          category: "want to sing"
+        }} />
+        <SongCard 
+        song = {{
+          title: "someone like you",
+          artist: "adele",
+          lyrics: "blah blah",
+          category: "go-to song"
+        }} />
       </div>
 
       {loading ? <div>Loading...</div> : <songCard />}
