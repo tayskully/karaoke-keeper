@@ -1,6 +1,6 @@
 const { User, Song } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const { getSongs } = require("../utils/song");
+const { getSongs, getRandomSongs } = require("../utils/song");
 
 const resolvers = {
   Query: {
@@ -14,6 +14,10 @@ const resolvers = {
       return User.find();
     },
     songs: async (_, { song }) => {
+      if (song === "random") {
+        const songData = await getRandomSongs();
+        return songData;
+      }
       const songData = await getSongs(song);
       console.log(songData);
       return songData;
@@ -25,6 +29,7 @@ const resolvers = {
   
       return songData;
     },
+   
   },
 
   Mutation: {
