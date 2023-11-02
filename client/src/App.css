@@ -14,10 +14,12 @@
 
 header {
   min-height: 200px;
+  min-height: 200px;
 }
 
 .karaoke {
   font-family: "Warnes", cursive;
+  font-size: 50px;
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
     0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
@@ -32,6 +34,9 @@ header {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #b401fb,
       0 0 40px #b401fb, 0 0 50px #b401fb, 0 0 60px #b401fb, 0 0 70px #b401fb;
   }
+}
+h2 {
+  font-family: "Warnes", cursive;
 }
 
 a {
@@ -54,6 +59,50 @@ a:hover {
 .ui.cards > .card > .content.extra {
   background-color: #000000;
   color: white;
+}
+
+.ui.input > input {
+  min-width: 300px;
+  font-size: 4rem;
+  color: greenyellow;
+  background-image: linear-gradient(
+    to left,
+    rgb(0, 0, 0),
+    rgb(174, 0, 255)
+  ) !important;
+}
+main {
+  display: flex;
+  justify-content: center;
+}
+
+.formContainer {
+  /* display: flex; */
+  justify-content: center;
+  padding: 100px;
+}
+
+.login-form,
+.sign-up-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./seoul.svg");
+  min-width: 400px;
+  min-height: 400px;
+  background-position: center;
+  color: white;
+
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
+    0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
+  font-size: 5rem;
+}
+.login-form::before {
+  opacity: 0.75;
+}
+Button {
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
+    0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
 }
 
 .card {
