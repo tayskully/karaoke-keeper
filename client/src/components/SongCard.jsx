@@ -1,12 +1,13 @@
 import { Button, Card, Image } from "semantic-ui-react";
-// import { getSongs } from "../../../server/utils/song";
+
 
 export default function SongCard() {
   return (
     <Card.Group>
-      <Card >
+      <Card>
         <Card.Content>
-          <Image size="mini" src="#" /><br />
+          <Image size="mini" src="#" />
+          <br />
           <Card.Header>Song</Card.Header>
           <Card.Meta>by Someone </Card.Meta>
           <Card.Description>
