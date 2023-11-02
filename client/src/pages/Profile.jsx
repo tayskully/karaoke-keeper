@@ -39,6 +39,7 @@ const Profile = () => {
   return (
     <div>
         <h2>Hi, I am the profile page</h2>
+        <SongCard />
     </div>
   );
 };
