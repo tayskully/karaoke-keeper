@@ -19,7 +19,7 @@ header {
 
 .karaoke {
   font-family: "Warnes", cursive;
-  font-size:50px;
+  font-size: 50px;
   color: #fff;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
     0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
@@ -36,7 +36,7 @@ header {
   }
 }
 h2 {
-  font-family:"Warnes", cursive;
+  font-family: "Warnes", cursive;
 }
 
 a {
@@ -51,17 +51,10 @@ a:hover {
 .ui.card > .header,
 .ui.card > .meta,
 .ui.cards > .card > .content {
-  color: rgb(255, 255, 255);
-.ui.card > .content,
-.ui.card > .header,
-.ui.card > .meta,
-.ui.cards > .card > .content {
   color: rgb(255, 255, 255) !important;
   background-color: #000000;
 }
 
-.ui.card > .content.extra,
-.ui.cards > .card > .content.extra {
 .ui.card > .content.extra,
 .ui.cards > .card > .content.extra {
   background-color: #000000;
@@ -83,37 +76,34 @@ main {
   justify-content: center;
 }
 
-
 .formContainer {
   /* display: flex; */
-  justify-content:center;
+  justify-content: center;
   padding: 100px;
 }
 
-.login-form, 
+.login-form,
 .sign-up-form {
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("./seoul.svg");
-  min-width:400px;
-  min-height:400px;
+  min-width: 400px;
+  min-height: 400px;
   background-position: center;
-  color:white;
+  color: white;
 
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
-  0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
-  font-size:5rem;
+    0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
+  font-size: 5rem;
 }
-.login-form::before {    
-
+.login-form::before {
   opacity: 0.75;
 }
 Button {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
-  0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
+    0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
 }
-
 
 .card {
   color: white;
