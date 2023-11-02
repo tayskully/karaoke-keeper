@@ -37,8 +37,9 @@ function App() {
   return (
     <>
       <header className="visible">
+      <h1 className="karaoke">Karaoke Keeper</h1>
         <div>
-          <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
+          <a href="/">
             <img
               src={logo}
               width="200px"
@@ -47,7 +48,7 @@ function App() {
             />
           </a>
         </div>
-        <h1 className="karaoke">Karaoke Keeper</h1>
+      
       </header>
       <ApolloProvider client={client}>
         <main>

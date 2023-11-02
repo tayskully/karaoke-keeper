@@ -30,18 +30,19 @@ const Home = () => {
 
   return (
     <div>
-      <Form onSubmit={handleFormSubmit}>
-        <Form.Input
-          className="formInput"
-          inverted
-          onChange={handleChange}
-          name="song"
-          value={formState.song}
-          placeholder="Search for a song..."
-        />
-      </Form>
-
-      <Grid columns={4} divided>
+      <div className="formContainer">
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Input
+            className="formInput"
+            inverted
+            onChange={handleChange}
+            name="song"
+            value={formState.song}
+            placeholder="Search for a song..."
+          />
+        </Form>
+      </div>
+      <Grid stackable columns={3} divided>
         {loading ? (
           <div>Loading...</div>
         ) : (
