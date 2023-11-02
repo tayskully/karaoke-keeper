@@ -70,7 +70,7 @@ module.exports = {
         image: songData.image,
       };
     });
-    console.log(songSearch);
+
     return songSearch;
   },
 };
