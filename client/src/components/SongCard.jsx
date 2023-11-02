@@ -14,7 +14,6 @@ export default function SongCard({ song }) {
             <Card.Meta style={{ color: "white" }}>{song.artist}</Card.Meta>
             <Card.Description>
               <Button basic color="green">
-                <a href="/lyrics/${song.id}">View Song</a>
                 <Link to={`/lyrics/${song.id}`}>View Song</Link>
               </Button>
             </Card.Description>
