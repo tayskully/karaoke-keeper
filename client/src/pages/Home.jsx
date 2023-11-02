@@ -27,7 +27,7 @@ const Home = () => {
         icon={<Icon circular link search />}
         onSubmit={handleFormSubmit}
         name="search"
-        value={searchInput}
+        // value={searchInput}
         placeholder="Search for a song..."
       />
       <div className="container">
