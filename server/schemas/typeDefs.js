@@ -11,6 +11,7 @@ type Song {
   _id: ID
   title: String
   artist: String
+  image: String
   lyrics: String
   category: String
   notes: [String]
@@ -23,7 +24,7 @@ type Song {
     users: [User]
     user(username: String!): User
     me: User
-    songs(song: String): Song
+    songs(song: String): [Song]
 
   }
 

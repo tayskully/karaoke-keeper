@@ -1,15 +1,15 @@
 // import { useState } from "react";
-import 'semantic-ui-css/semantic.min.css'
+import "semantic-ui-css/semantic.min.css";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 import logo from "/kk-logo.png";
 import "./App.css";
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -46,7 +46,7 @@ function App() {
           />
         </a>
       </div>
-      <h1>Karaoke Keeper</h1>
+      <h1 className="karaoke">Karaoke Keeper</h1>
       <ApolloProvider client={client}>
         <div className="card"></div>
         <Outlet />
