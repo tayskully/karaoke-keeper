@@ -62,12 +62,12 @@ module.exports = {
     // const init = async () => {
     try {
       const song = await Client.songs.get(songId);
-      console.log("About the Song:\n", song, "\n");
+      // console.log("About the Song:\n", song, "\n");
       // Ok lets get the lyrics
       const lyrics = await song.lyrics();
-      console.log("Lyrics of the Song:\n", lyrics, "\n");
-      console.log(song);
-      console.log(lyrics);
+      // console.log("Lyrics of the Song:\n", lyrics, "\n");
+      // console.log(song);
+      // console.log(lyrics);
       return {
         songId: song.id,
         title: song.title,
