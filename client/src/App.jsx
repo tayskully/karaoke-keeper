@@ -7,10 +7,11 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import logo from "/kk-logo.png";
+import logo from "/kk-logo.svg";
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import Nav from './components/Nav/index';
+import Header from "./components/Header/index";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,21 +38,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <>
-      <header className="visible">
-        <div>
-          <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
-            <img
-              src={logo}
-              width="200px"
-              className="logo"
-              alt="karaoke keeper logo"
-            />
-          </a>
-        </div>
-        <h1 className="karaoke">Karaoke Keeper</h1>
-      </header>
+      
       <ApolloProvider client={client}>
         <main>
+          <Header />
           <Nav className='navbar'/>
           <Outlet />
         </main>
