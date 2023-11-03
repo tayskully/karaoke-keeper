@@ -76,6 +76,18 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
+    removeSong: async (parent, { userId, songId }) => {
+
+      // first find the song in the DB with the songId (genius id)
+      const song = await Song.findOne({ songId });
+    
+      // second remove the song from the user using song._id (DB id)
+      return User.findOneAndUpdate(
+        { _id: userId },
+        { $pull: { songs: song._id } },
+        { new: true }
+      );
+    },
   },
 };
 
