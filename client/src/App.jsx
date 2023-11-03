@@ -37,21 +37,24 @@ const client = new ApolloClient({
 function App() {
   return (
     <>
-      <div>
-        <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
-          <img
-            src={logo}
-            width="200px"
-            className="logo"
-            alt="karaoke keeper logo"
-          />
-        </a>
-      </div>
-      <h1 className="karaoke">Karaoke Keeper</h1>
+      <header className="visible">
+        <div>
+          <a href="https://github.com/tayskully/karaoke-keeper" target="_blank">
+            <img
+              src={logo}
+              width="200px"
+              className="logo"
+              alt="karaoke keeper logo"
+            />
+          </a>
+        </div>
+        <h1 className="karaoke">Karaoke Keeper</h1>
+      </header>
       <ApolloProvider client={client}>
-        <div className="card"></div>
-        <Nav />
-        <Outlet />
+        <main>
+          <Nav className='navbar'/>
+          <Outlet />
+        </main>
       </ApolloProvider>
     </>
   );

@@ -25,7 +25,7 @@ type Song {
     user(username: String!): User
     me: User
     songs(song: String): [Song]
-
+    song(_id: ID): Song
   }
 
   type Mutation {
