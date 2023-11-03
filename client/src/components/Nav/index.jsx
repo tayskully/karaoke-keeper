@@ -18,7 +18,7 @@ function Nav() {
           );
         } else {
           return (
-            
+                
                 <Sidebar
                     as={Menu}
                     animation='overlay'
@@ -28,6 +28,16 @@ function Nav() {
                     visible
                     width='thick'
                 >
+                  <div>
+                        <a href="/">
+                        <img
+                          src="./public/kk-logo.svg"
+                          width="96px"
+                          className="logo"
+                          alt="karaoke keeper logo"
+                        />
+                      </a>
+                      </div>
                 
                 <Link to="/">
                     <Menu.Item as='a'>

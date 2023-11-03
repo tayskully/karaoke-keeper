@@ -42,8 +42,10 @@ function App() {
       <ApolloProvider client={client}>
         <main>
           <Header />
+          <div className="centerBody">
           <Nav className='navbar'/>
           <Outlet />
+          </div>
         </main>
       </ApolloProvider>
     </>

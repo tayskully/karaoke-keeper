@@ -80,6 +80,18 @@ main {
   justify-content: center;
 }
 
+.centerBody {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div#root {
+  padding-left: 100px;
+}
+
+
+
 .formContainer {
   /* display: flex; */
   justify-content: center;
