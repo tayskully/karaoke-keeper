@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Lyrics from "./pages/Lyrics.jsx";
+import Lyrics from "./pages/Lyrics";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom/dist";
 
