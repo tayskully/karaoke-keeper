@@ -10,23 +10,25 @@ module.exports = {
     console.log(searches);
 
     const songSearch = searches.map((songData) => {
-      console.log({
-        title: songData.title,
-        artist: songData.artist.name,
-        image: songData.image,
-      });
+      // console.log({
+      // title: songData.title,
+      // artist: songData.artist.name,
+      // image: songData.image,
+      // songId: songData.id,
+      // });
       return {
         title: songData.title,
         artist: songData.artist.name,
         image: songData.image,
+        songId: songData.id,
       };
     });
 
     // Pick first one
 
-    const firstSong = searches[0];
-    const secondSong = searches[1];
-    const multipleSongs = searches[(0, 1, 2, 3, 4)];
+    // const firstSong = searches[0];
+    // const secondSong = searches[1];
+    // const multipleSongs = searches[(0, 1, 2, 3, 4)];
     // console.log("About the Song:\n", firstSong.artist.name, "\n");
     // console.log("About the Song:\n", secondSong.artist.name, "\n");
     // console.log("About the Song:\n", multipleSongs, "\n");
@@ -47,7 +49,7 @@ module.exports = {
     //   "\n",
     //   lyrics
     // );
-    console.log(songSearch);
+    // console.log(songSearch);
 
     //returns the array of songs from search term
     return songSearch;
@@ -56,6 +58,36 @@ module.exports = {
     // init();
   },
 
+  getSongById: async (songId) => {
+    // const init = async () => {
+    const song = await Client.songs.get(songId);
+    console.log("About the Song:\n", song, "\n");
+    // Ok lets get the lyrics
+    const lyrics = await song.lyrics();
+    console.log("Lyrics of the Song:\n", lyrics, "\n");
+    return {
+      songId: song.id,
+      title: song.title,
+      lyrics,
+    };
+    console.log(song);
+    console.log(lyrics);
+    // const searches = await Client.songs.search(song);
+
+    // const songSearch = searches.map((songData) => {
+    //   console.log({
+    //     title: songData.title,
+    //     artist: songData.artist.name,
+    //     image: songData.image,
+    //   });
+    //   return {
+    //     title: songData.title,
+    //     artist: songData.artist.name,
+    //     image: songData.image,
+    //     songId: songData.id,
+    //   };
+    // });
+  },
   getRandomSongs: async () => {
     const randomStrings = [
       "I",
