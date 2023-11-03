@@ -55,7 +55,9 @@ const Home = () => {
           <Grid.Row>
             {songs.map((song, i) => (
               <Grid.Column key={i}>
-                <SongCard song={song} />
+                <div className="cardholder">
+                  <SongCard song={song} />
+                </div>
               </Grid.Column>
             ))}
           </Grid.Row>
