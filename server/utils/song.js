@@ -7,7 +7,7 @@ module.exports = {
   getSongs: async (song) => {
     // const init = async () => {
     const searches = await Client.songs.search(song);
-    console.log(searches);
+    // console.log(searches);
 
     const songSearch = searches.map((songData) => {
       // console.log({
@@ -60,18 +60,23 @@ module.exports = {
 
   getSongById: async (songId) => {
     // const init = async () => {
-    const song = await Client.songs.get(songId);
-    console.log("About the Song:\n", song, "\n");
-    // Ok lets get the lyrics
-    const lyrics = await song.lyrics();
-    console.log("Lyrics of the Song:\n", lyrics, "\n");
-    return {
-      songId: song.id,
-      title: song.title,
-      lyrics,
-    };
-    console.log(song);
-    console.log(lyrics);
+    try {
+      const song = await Client.songs.get(songId);
+      console.log("About the Song:\n", song, "\n");
+      // Ok lets get the lyrics
+      const lyrics = await song.lyrics();
+      console.log("Lyrics of the Song:\n", lyrics, "\n");
+      console.log(song);
+      console.log(lyrics);
+      return {
+        songId: song.id,
+        title: song.title,
+        artist: song.artist.name,
+        lyrics,
+      };
+    } catch (err) {
+      console.error(err);
+    }
     // const searches = await Client.songs.search(song);
 
     // const songSearch = searches.map((songData) => {
