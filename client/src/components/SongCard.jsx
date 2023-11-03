@@ -3,7 +3,7 @@ import { Button, Card, Image } from "semantic-ui-react";
 import "./SongCard.css";
 
 export default function SongCard({ song }) {
-  // console.log(song);
+  console.log(song);
   return (
     <div className="d-flex flex-row">
       <Card.Group>
