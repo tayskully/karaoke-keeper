@@ -19,6 +19,9 @@ const songSchema = new Schema({
   lyrics: {
     type: String,
   },
+  songId: {
+    type: Number,
+  },
   notes: [
     {
       noteText: {
