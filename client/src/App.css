@@ -13,8 +13,10 @@
 }
 
 header {
-  min-height: 200px;
-  min-height: 200px;
+  /* min-height: 200px;
+  min-height: 200px; */
+  text-align: center;
+  display: inline;
 }
 
 .karaoke {
@@ -24,6 +26,7 @@ header {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #b401fb, 0 0 20px #b401fb,
     0 0 25px #b401fb, 0 0 30px #b401fb, 0 0 35px #b401fb;
   animation: glow 3s linear infinite;
+  
 }
 @keyframes glow {
   from {
@@ -73,8 +76,21 @@ a:hover {
 }
 main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
+
+.centerBody {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+div#root {
+  padding-left: 100px;
+}
+
+
 
 .formContainer {
   /* display: flex; */
