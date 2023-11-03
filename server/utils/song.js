@@ -205,6 +205,7 @@ module.exports = {
         title: songData.title,
         artist: songData.artist.name,
         image: songData.image,
+        songId: songData.id,
       };
     });
 
