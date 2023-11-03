@@ -1,9 +1,6 @@
 import { Button, Card, Image } from "semantic-ui-react";
-import "./SongCard.css";
-import { Link } from "react-router-dom";
 
-export default function SongCard({ song }) {
-
+export default function SongProfileCard({ song }) {
   return (
     <div className="d-flex flex-row">
       <Card.Group>
@@ -11,11 +8,11 @@ export default function SongCard({ song }) {
           <Card.Content>
             <Image size="medium" rounded src={song.image} />
             <br />
-            <Card.Header style={{ color: "white" }}>{song.title}</Card.Header>
-            <Card.Meta style={{ color: "white" }}>{song.artist}</Card.Meta>
+            <Card.Header>{song.title}</Card.Header>
+            <Card.Meta>{song.artist}</Card.Meta>
             <Card.Description>
               <Button basic color="green">
-                <Link to={`/lyrics/${song.id}`}>View Song</Link>
+                <a href="/lyrics/${song.id}">View Song</a>
               </Button>
             </Card.Description>
           </Card.Content>
