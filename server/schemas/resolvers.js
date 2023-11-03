@@ -6,7 +6,7 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate({ path: 'songs'});
       }
       throw AuthenticationError;
     },
@@ -54,13 +54,16 @@ const resolvers = {
       return { token, user };
     },
 
-    addSong: async (parent, { song }, context) => {
+    addSong: async (parent, { title, artist, lyrics, category, image, songId }, context) => {
+
       if (context.user) {
         const song = await Song.create({
+          songId,
           title,
           artist,
           lyrics,
           category,
+          image
         });
 
         await User.findOneAndUpdate(

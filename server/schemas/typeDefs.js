@@ -34,7 +34,7 @@ type Query {
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSong(title: String!, artist: String, lyrics: String, category: String): Song
+    addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
   }
 
 
