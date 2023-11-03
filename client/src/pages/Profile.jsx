@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import {  useQuery } from '@apollo/client';
 
 import SongProfileCard from '../components/SongProfileCard'
 
@@ -24,12 +24,14 @@ const Profile = () => {
   // }
 
   const { loading, data } = useQuery(QUERY_ME);
+  
 
   if (loading) {
     return <div>Loading...</div>; 
   }
 
-  const songs = data?.me?.songs || [];
+  let me = data?.me;
+  let songs = data?.me?.songs || [];
 
   // if (!user?.username) {
   //   return (
@@ -43,7 +45,7 @@ const Profile = () => {
   return (
     <div>
         <h2>Hi, I am the profile page</h2>
-        {songs.map((song) => <SongProfileCard song={song} />)}
+        {songs.map((song) => <SongProfileCard song={song} userId={me._id}/>)}
         
     </div>
   );

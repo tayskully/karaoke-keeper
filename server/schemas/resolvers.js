@@ -77,7 +77,7 @@ const resolvers = {
       ("You need to be logged in!");
     },
     removeSong: async (parent, { userId, songId }) => {
-
+      console.log(userId, songId)
       // first find the song in the DB with the songId (genius id)
       const song = await Song.findOne({ songId });
     
