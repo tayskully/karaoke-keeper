@@ -1,6 +1,6 @@
 const { User, Song } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const { getSongs, getRandomSongs } = require("../utils/song");
+const { getSongs, getRandomSongs, getSongById } = require("../utils/song");
 
 const resolvers = {
   Query: {
@@ -19,17 +19,15 @@ const resolvers = {
         return songData;
       }
       const songData = await getSongs(song);
-      console.log(songData);
+      // console.log(songData);
       return songData;
     },
 
     //get one song for lyric page
     song: async (_, { songId }) => {
-      const songData = await Song.findOne({ _id: songId });
-  
+      const songData = await getSongById(songId);
       return songData;
     },
-   
   },
 
   Mutation: {
