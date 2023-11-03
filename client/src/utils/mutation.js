@@ -24,3 +24,16 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_SONG = gql`
+mutation Mutation($title: String!, $artist: String, $lyrics: String, $category: String, $image: String, $songId: Int) {
+  addSong(title: $title, artist: $artist, lyrics: $lyrics, category: $category, image: $image, songId: $songId) {
+    _id
+    artist
+    category
+    image
+    lyrics
+    notes
+    title
+  }
+}
+`

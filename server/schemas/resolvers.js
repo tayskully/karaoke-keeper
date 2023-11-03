@@ -1,12 +1,12 @@
 const { User, Song } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const { getSongs, getRandomSongs } = require("../utils/song");
+const { getSongs, getRandomSongs, getSongById } = require("../utils/song");
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate({ path: 'songs'});
       }
       throw AuthenticationError;
     },
@@ -19,17 +19,15 @@ const resolvers = {
         return songData;
       }
       const songData = await getSongs(song);
-      console.log(songData);
+      // console.log(songData);
       return songData;
     },
 
     //get one song for lyric page
     song: async (_, { songId }) => {
-      const songData = await Song.findOne({ _id: songId });
-  
+      const songData = await getSongById(songId);
       return songData;
     },
-   
   },
 
   Mutation: {
@@ -56,13 +54,16 @@ const resolvers = {
       return { token, user };
     },
 
-    addSong: async (parent, { song }, context) => {
+    addSong: async (parent, { title, artist, lyrics, category, image, songId }, context) => {
+
       if (context.user) {
         const song = await Song.create({
+          songId,
           title,
           artist,
           lyrics,
           category,
+          image
         });
 
         await User.findOneAndUpdate(

@@ -1,8 +1,39 @@
+import { Link } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
 import "./SongCard.css";
-import { Link } from "react-router-dom";
+
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { ADD_SONG } from "../utils/mutation";
+import { GET_SINGLE_SONG } from "../utils/queries";
 
 export default function SongCard({ song }) {
+  const [getSong] = useLazyQuery(GET_SINGLE_SONG);
+  const [addSong] = useMutation(ADD_SONG);
+
+  const handleAddSong = async () => {
+    try {
+
+      // get lyrics
+      const songResult = await getSong({ variables: { songId: song.songId } })
+
+      const lyrics = songResult.data.song.lyrics
+
+      const { data } = await addSong({
+        variables: {
+          songId: parseInt(song.songId),
+          title: song.title,
+          artist: song.artist,
+          image: song.image,
+          lyrics
+        },
+      });
+
+
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   return (
     <div className="d-flex flex-row">
       <Card.Group>
@@ -14,7 +45,11 @@ export default function SongCard({ song }) {
             <Card.Meta style={{ color: "white" }}>{song.artist}</Card.Meta>
             <Card.Description>
               <Button basic color="green">
-                <Link to={`/lyrics/${song.id}`}>View Song</Link>
+                {/* <a href="/songs/{song.id}">View Song</a> */}
+                <Link to={`/songs/${song.songId}`}> view song</Link>
+              </Button>
+              <Button onClick={handleAddSong}>
+                add to profile
               </Button>
             </Card.Description>
           </Card.Content>

@@ -128,3 +128,8 @@ Button {
 .header {
   color: white;
 }
+
+.cardholder {
+  display: flex;
+  justify-content: center;
+}

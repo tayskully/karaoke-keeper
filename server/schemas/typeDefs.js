@@ -9,6 +9,7 @@ type User {
 
 type Song {
   _id: ID
+  songId: Int
   title: String
   artist: String
   image: String
@@ -16,22 +17,24 @@ type Song {
   category: String
   notes: [String]
 }
-  type Auth {
+
+type Auth {
     token: ID!
     user: User
   }
-  type Query {
+
+type Query {
     users: [User]
     user(username: String!): User
     me: User
     songs(song: String): [Song]
-    song(_id: ID): Song
+    song(songId: Int): Song
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSong(title: String!, artist: String, lyrics: String, category: String): Song
+    addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
   }
 
 
