@@ -23,14 +23,14 @@ export const SEARCH_SONGS = gql`
 `;
 
 export const GET_SINGLE_SONG = gql`
-  query getSong($songId: Int) {
-    song {
+  query Query($songId: Int) {
+    song(songId: $songId) {
       _id
       songId
       title
       artist
-      image
       lyrics
+      image
       category
       notes
     }
