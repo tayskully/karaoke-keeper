@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
 import "./SongCard.css";
-import { Link } from "react-router-dom";
 
 export default function SongCard({ song }) {
 
@@ -15,7 +15,8 @@ export default function SongCard({ song }) {
             <Card.Meta style={{ color: "white" }}>{song.artist}</Card.Meta>
             <Card.Description>
               <Button basic color="green">
-                <Link to={`/lyrics/${song.id}`}>View Song</Link>
+                {/* <a href="/songs/{song.id}">View Song</a> */}
+                <Link to={`/songs/${song.songId}`}> view song</Link>
               </Button>
             </Card.Description>
           </Card.Content>

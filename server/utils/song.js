@@ -7,26 +7,28 @@ module.exports = {
   getSongs: async (song) => {
     // const init = async () => {
     const searches = await Client.songs.search(song);
-    console.log(searches);
+    // console.log(searches);
 
     const songSearch = searches.map((songData) => {
-      console.log({
-        title: songData.title,
-        artist: songData.artist.name,
-        image: songData.image,
-      });
+      // console.log({
+      // title: songData.title,
+      // artist: songData.artist.name,
+      // image: songData.image,
+      // songId: songData.id,
+      // });
       return {
         title: songData.title,
         artist: songData.artist.name,
         image: songData.image,
+        songId: songData.id,
       };
     });
 
     // Pick first one
 
-    const firstSong = searches[0];
-    const secondSong = searches[1];
-    const multipleSongs = searches[(0, 1, 2, 3, 4)];
+    // const firstSong = searches[0];
+    // const secondSong = searches[1];
+    // const multipleSongs = searches[(0, 1, 2, 3, 4)];
     // console.log("About the Song:\n", firstSong.artist.name, "\n");
     // console.log("About the Song:\n", secondSong.artist.name, "\n");
     // console.log("About the Song:\n", multipleSongs, "\n");
@@ -47,7 +49,7 @@ module.exports = {
     //   "\n",
     //   lyrics
     // );
-    console.log(songSearch);
+    // console.log(songSearch);
 
     //returns the array of songs from search term
     return songSearch;
@@ -56,6 +58,41 @@ module.exports = {
     // init();
   },
 
+  getSongById: async (songId) => {
+    // const init = async () => {
+    try {
+      const song = await Client.songs.get(songId);
+      console.log("About the Song:\n", song, "\n");
+      // Ok lets get the lyrics
+      const lyrics = await song.lyrics();
+      console.log("Lyrics of the Song:\n", lyrics, "\n");
+      console.log(song);
+      console.log(lyrics);
+      return {
+        songId: song.id,
+        title: song.title,
+        artist: song.artist.name,
+        lyrics,
+      };
+    } catch (err) {
+      console.error(err);
+    }
+    // const searches = await Client.songs.search(song);
+
+    // const songSearch = searches.map((songData) => {
+    //   console.log({
+    //     title: songData.title,
+    //     artist: songData.artist.name,
+    //     image: songData.image,
+    //   });
+    //   return {
+    //     title: songData.title,
+    //     artist: songData.artist.name,
+    //     image: songData.image,
+    //     songId: songData.id,
+    //   };
+    // });
+  },
   getRandomSongs: async () => {
     const randomStrings = [
       "I",
@@ -173,6 +210,7 @@ module.exports = {
         title: songData.title,
         artist: songData.artist.name,
         image: songData.image,
+        songId: songData.id,
       };
     });
 

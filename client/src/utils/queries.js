@@ -17,18 +17,20 @@ export const SEARCH_SONGS = gql`
       lyrics
       title
       image
+      songId
     }
   }
 `;
 
-export const GET_SONG = gql`
-  query getSong($songId: Int) {
-    song {
+export const GET_SINGLE_SONG = gql`
+  query Query($songId: Int) {
+    song(songId: $songId) {
       _id
+      songId
       title
       artist
-      image
       lyrics
+      image
       category
       notes
     }
