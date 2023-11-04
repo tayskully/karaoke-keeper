@@ -81,9 +81,9 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
-    addNote: async (parent, { noteId, noteText }) => {
-      return Thought.findOneAndUpdate(
-        { _id: noteId },
+    addNote: async (parent, { songId, noteText }) => {
+      return Song.findOneAndUpdate(
+        { _id: songId },
         {
           $addToSet: { notes: { noteText } },
         },
