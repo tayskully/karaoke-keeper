@@ -6,7 +6,9 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate({ path: 'songs'});
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "songs",
+        });
       }
       throw AuthenticationError;
     },
@@ -54,8 +56,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addSong: async (parent, { title, artist, lyrics, category, image, songId }, context) => {
-
+    addSong: async (
+      parent,
+      { title, artist, lyrics, category, image, songId },
+      context
+    ) => {
       if (context.user) {
         const song = await Song.create({
           songId,
@@ -63,7 +68,7 @@ const resolvers = {
           artist,
           lyrics,
           category,
-          image
+          image,
         });
 
         await User.findOneAndUpdate(
@@ -75,6 +80,17 @@ const resolvers = {
       }
       throw AuthenticationError;
       ("You need to be logged in!");
+    },
+    addNote: async (parent, { noteId, noteText }) => {
+      return Thought.findOneAndUpdate(
+        { _id: noteId },
+        {
+          $addToSet: { notes: { noteText } },
+        },
+        {
+          new: true,
+        }
+      );
     },
   },
 };
