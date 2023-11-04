@@ -18,6 +18,12 @@ type Song {
   notes: [String]
 }
 
+type Notes {
+  _id: ID
+  noteText: String
+  createdAt: String
+}
+
 type Auth {
     token: ID!
     user: User
