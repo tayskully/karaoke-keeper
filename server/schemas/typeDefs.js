@@ -41,6 +41,7 @@ type Query {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
+    removeSong(songId: Int, userId: ID): Song
     addNote(songId: ID!, noteText: String!): Song
   }
 

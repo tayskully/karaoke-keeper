@@ -36,4 +36,19 @@ mutation Mutation($title: String!, $artist: String, $lyrics: String, $category: 
     title
   }
 }
-`
+`;
+
+export const REMOVE_SONG = gql`
+mutation Mutation($songId: Int, $userId: ID) {
+  removeSong(songId: $songId, userId: $userId) {
+    _id
+    artist
+    title
+    category
+    image
+    lyrics
+    notes
+    songId
+  }
+}
+`;
