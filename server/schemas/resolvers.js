@@ -93,16 +93,30 @@ const resolvers = {
         { new: true }
       );
     },
-    addNote: async (parent, { songId, noteText }) => {
-      return Song.findOneAndUpdate(
-        { _id: songId },
-        {
-          $addToSet: { notes: { noteText } },
-        },
-        {
-          new: true,
-        }
-      );
+    // addNote: async (parent, { songId, noteText }) => {
+    //   return Song.findOneAndUpdate(
+    //     { _id: songId },
+    //     {
+    //       $addToSet: { notes: { noteText } },
+    //     },
+    //     {
+    //       new: true,
+    //     }
+    //   );
+    // },
+    addNote: async (parent, { songId, noteText }, context) => {
+      try {
+        // Find the song by its ID and update it using findOneAndUpdate
+        const updatedSong = await Song.findOneAndUpdate(
+          { _id: songId },
+          { $push: { notes: { noteText } } }
+        );
+
+        return updatedSong;
+      } catch (error) {
+        // Handle any errors, such as invalid songId
+        throw new Error("Note creation failed: " + error.message);
+      }
     },
   },
 };

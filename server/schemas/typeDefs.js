@@ -15,10 +15,10 @@ type Song {
   image: String
   lyrics: String
   category: String
-  notes: [String]
+  notes: [Note]
 }
 
-type Notes {
+type Note {
   _id: ID
   noteText: String
   createdAt: String
@@ -42,7 +42,7 @@ type Query {
     login(email: String!, password: String!): Auth
     addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
     removeSong(songId: Int, userId: ID): Song
-    addNote(songId: ID!, noteText: String!): Song
+    addNote(songId: ID, noteText: String!): Note
   }
 
 
