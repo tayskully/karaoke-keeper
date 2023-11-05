@@ -6,7 +6,9 @@ const resolvers = {
   Query: {
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate({ path: 'songs'});
+        return User.findOne({ _id: context.user._id }).populate({
+          path: "songs",
+        });
       }
       throw AuthenticationError;
     },
@@ -27,6 +29,12 @@ const resolvers = {
     song: async (_, { songId }) => {
       const songData = await getSongById(songId);
       return songData;
+    },
+
+    note: async (_, { songId }) => {
+      const noteData = await Song.findOne(songId);
+
+      return noteData;
     },
   },
 
@@ -54,8 +62,11 @@ const resolvers = {
       return { token, user };
     },
 
-    addSong: async (parent, { title, artist, lyrics, category, image, songId }, context) => {
-
+    addSong: async (
+      parent,
+      { title, artist, lyrics, category, image, songId },
+      context
+    ) => {
       if (context.user) {
         const song = await Song.create({
           songId,
@@ -63,7 +74,7 @@ const resolvers = {
           artist,
           lyrics,
           category,
-          image
+          image,
         });
 
         await User.findOneAndUpdate(
@@ -77,16 +88,33 @@ const resolvers = {
       ("You need to be logged in!");
     },
     removeSong: async (parent, { userId, songId }) => {
-      console.log(userId, songId)
+      console.log(userId, songId);
       // first find the song in the DB with the songId (genius id)
       const song = await Song.findOne({ songId });
-    
+
       // second remove the song from the user using song._id (DB id)
       return User.findOneAndUpdate(
         { _id: userId },
         { $pull: { songs: song._id } },
         { new: true }
       );
+    },
+    addNote: async (parent, { songId, noteText }, context) => {
+      try {
+        // Find the song by its ID and update it using findOneAndUpdate
+        const updatedSong = await Song.findOneAndUpdate(
+          { _id: songId },
+          {
+            $addToSet: { notes: { noteText } },
+          },
+          { new: true }
+        );
+
+        return updatedSong;
+      } catch (error) {
+        // Handle any errors, such as invalid songId
+        throw new Error("Note creation failed: " + error.message);
+      }
     },
   },
 };
