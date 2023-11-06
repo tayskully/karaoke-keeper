@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { Button, Card, Icon, Image, Header } from "semantic-ui-react";
+import { useMutation, useQuery } from "@apollo/client";
+import { Button, Card, Icon, Image, Header, Form } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import React from "react";
 // import { useEffect } from "react";
 
 import Auth from "../utils/auth";
 
 import { GET_SINGLE_SONG } from "../utils/queries";
+//add note
+import { ADD_SONG } from "../utils/mutation";
 
 const Lyrics = () => {
   //   Use `useParams()` to retrieve value of the route parameter `:songId`
@@ -18,6 +21,11 @@ const Lyrics = () => {
   });
 
   let song = data?.song || {};
+
+  //change to add note query
+  const addNote = () => {
+    const [addNote] = useMutation(ADD_SONG);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,6 +42,13 @@ const Lyrics = () => {
 
       <hr />
       <span style={{ whiteSpace: "pre-line" }}> Lyrics:{song.lyrics}</span>
+
+      <Form>
+        <Form.Field label="add note for song" control="textarea" rows="2" />
+        <Button basic color="green" onClick={addNote}>
+          <Link>Add</Link>
+        </Button>
+      </Form>
     </div>
 
     //     <Card>
