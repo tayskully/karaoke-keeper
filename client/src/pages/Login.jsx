@@ -42,7 +42,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="login-form" >
+    <div className="login-form" style={{ display: 'flex', flexDirection: 'column' }}>
     {error && (
       <div>
         <h2>Error: Not valid User inputs</h2>
