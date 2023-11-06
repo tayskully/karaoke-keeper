@@ -15,7 +15,12 @@ type Song {
   image: String
   lyrics: String
   category: String
-  notes: [String]
+  notes: [Note]
+}
+
+type Note {
+  noteText: String
+  createdAt: String
 }
 
 type Auth {
@@ -29,15 +34,15 @@ type Query {
     me: User
     songs(song: String): [Song]
     song(songId: Int): Song
+    note(_id: ID): [Note]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
+    addSong(songId: Int): Song
     removeSong(songId: Int, userId: ID): Song
+    addNote(songId: ID, noteText: String!): Song
   }
-
-
 `;
 module.exports = typeDefs;

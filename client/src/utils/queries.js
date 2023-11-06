@@ -1,24 +1,27 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
-query Query {
-  me {
-    songs {
+  query Query {
+    me {
+      songs {
+        _id
+        songId
+        title
+        artist
+        image
+        lyrics
+        category
+        notes {
+          createdAt
+          noteText
+        }
+      }
+      username
+      password
+      email
       _id
-      songId
-      title
-      artist
-      image
-      lyrics
-      category
-      notes
     }
-    username
-    password
-    email
-    _id
   }
-}
 `;
 
 export const SEARCH_SONGS = gql`
@@ -43,7 +46,10 @@ export const GET_SINGLE_SONG = gql`
       lyrics
       image
       category
-      notes
+      notes {
+        createdAt
+        noteText
+      }
     }
   }
 `;
