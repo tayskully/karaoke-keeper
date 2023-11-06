@@ -41,7 +41,11 @@ function Signup() {
 
   return (
     <div className="sign-up-form">
-      
+    {error && (
+      <div>
+        <h2>Make sure valid Password, at least 5 characters</h2>
+      </div>
+    )}
     <Form onSubmit={handleFormSubmit}>
       <Form.Field>
         <label>Username</label>
