@@ -1,22 +1,22 @@
 import { Button, Card, Image } from "semantic-ui-react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { REMOVE_SONG } from '../utils/mutation'
-import { QUERY_ME } from '../utils/queries'
+import { REMOVE_SONG } from "../utils/mutation";
+import { QUERY_ME } from "../utils/queries";
 
 export default function SongProfileCard({ song, userId }) {
   const [removeSong] = useMutation(REMOVE_SONG, {
-    refetchQueries: [
-      QUERY_ME
-    ]
+    refetchQueries: [QUERY_ME],
   });
 
   const handleRemoveSong = async () => {
-    console.log('userId', userId)
-    console.log('song', song)
-    const removedSong = await removeSong({ variables: { userId, songId: song.songId }})
-  }
-  
+    console.log("userId", userId);
+    console.log("song", song);
+    const removedSong = await removeSong({
+      variables: { userId, songId: song.songId },
+    });
+  };
+
   return (
     <div className="d-flex flex-row">
       <Card.Group>
@@ -30,8 +30,8 @@ export default function SongProfileCard({ song, userId }) {
               <Button basic color="green">
                 <Link to={`/songs/${song.songId}`}>View Song</Link>
               </Button>
-              <Button onClick={handleRemoveSong}>
-                Remove Song
+              <Button basic color="green" onClick={handleRemoveSong}>
+                <Link>Remove Song</Link>
               </Button>
             </Card.Description>
           </Card.Content>
