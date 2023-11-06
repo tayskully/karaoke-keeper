@@ -1,5 +1,5 @@
-import { Navigate, useParams } from 'react-router-dom';
-import {  useQuery } from '@apollo/client';
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import { Grid } from "semantic-ui-react";
 
 import SongProfileCard from "../components/SongProfileCard";
@@ -44,7 +44,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h2>Hi, I am the profile page</h2>
+      {Auth.loggedIn() && <h2>Welcome, {me.username} !!</h2>}
       <Grid stackable columns={3} divided>
         {loading ? (
           <div>Loading...</div>
