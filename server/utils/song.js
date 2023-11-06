@@ -72,6 +72,7 @@ module.exports = {
         songId: song.id,
         title: song.title,
         artist: song.artist.name,
+        image: song.image,
         lyrics,
       };
     } catch (err) {
