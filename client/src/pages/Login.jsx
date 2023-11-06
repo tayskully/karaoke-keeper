@@ -43,7 +43,11 @@ const Login = (props) => {
 
   return (
     <div className="login-form" >
-      
+    {error && (
+      <div>
+        <h2>Error: Not valid User inputs</h2>
+      </div>
+    )}
     <Form onSubmit={handleFormSubmit}>
       <Form.Field>
         <label>Email</label>
