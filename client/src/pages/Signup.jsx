@@ -12,7 +12,7 @@ function Signup() {
     email: "",
     password: "",
   });
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -40,7 +40,12 @@ function Signup() {
   };
 
   return (
-    <div className="sign-up-form">
+    <div className="sign-up-form" style={{ display: 'flex', flexDirection: 'column' }}>
+    {error && (
+      <div>
+        <h2>Make sure valid Password, at least 5 characters</h2>
+      </div>
+    )}
     <Form onSubmit={handleFormSubmit}>
       <Form.Field>
         <label>Username</label>
