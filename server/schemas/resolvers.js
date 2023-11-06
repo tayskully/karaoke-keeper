@@ -28,11 +28,17 @@ const resolvers = {
     //get one song for lyric page
     song: async (_, { songId }) => {
       const songData = await getSongById(songId);
+      const databaseSong = await Song.find({ songId });
+      console.log(databaseSong)
+      if(databaseSong.length){
+      const notes = databaseSong.map(song=>song.notes)
+      songData.notes = notes
+    }
       return songData;
     },
 
-    note: async (_, { songId }) => {
-      const noteData = await Song.findOne(songId);
+    notes: async (_, { songId }) => {
+      const noteData = await Song.find({ _id: songId });
 
       return noteData;
     },
@@ -93,7 +99,7 @@ const resolvers = {
       try {
         // Find the song by its ID and update it using findOneAndUpdate
         const updatedSong = await Song.findOneAndUpdate(
-          { _id: songId },
+          { songId: songId },
           {
             $addToSet: { notes: { noteText } },
           },

@@ -34,7 +34,7 @@ type Query {
     me: User
     songs(song: String): [Song]
     song(songId: Int): Song
-    note(_id: ID): [Note]
+    notes(songId: ID): [Note]  
   }
 
   type Mutation {

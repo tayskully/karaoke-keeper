@@ -1,30 +1,49 @@
 import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { Button, Card, Icon, Image, Header, Form } from "semantic-ui-react";
+import {
+  Button,
+  Card,
+  Icon,
+  Image,
+  Header,
+  Form,
+  Table,
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import React from "react";
+import { useState } from "react";
 // import { useEffect } from "react";
-
 import Auth from "../utils/auth";
-
 import { GET_SINGLE_SONG } from "../utils/queries";
 //add note
-import { ADD_SONG } from "../utils/mutation";
+import { ADD_NOTE } from "../utils/mutation";
 
 const Lyrics = () => {
   //   Use `useParams()` to retrieve value of the route parameter `:songId`
   const { songId } = useParams();
+  const [note, setNote] = useState("");
   // console.log(songId);
   // parseInt because it takes Int
   const { loading, data } = useQuery(GET_SINGLE_SONG, {
     variables: { songId: parseInt(songId) },
   });
-
   let song = data?.song || {};
 
   //change to add note query
-  const addNote = () => {
-    const [addNote] = useMutation(ADD_SONG);
+  const handleNoteChange = (event) => {
+    const note = event.target.value;
+    setNote(note);
+  };
+
+  const [addNote] = useMutation(ADD_NOTE);
+  const handleAddNote = async () => {
+    try {
+      if (note) {
+        const data = await addNote({ variables: { songId, noteText: note } });
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (loading) {
@@ -44,11 +63,35 @@ const Lyrics = () => {
       <span style={{ whiteSpace: "pre-line" }}> Lyrics:{song.lyrics}</span>
 
       <Form>
-        <Form.Field label="add note for song" control="textarea" rows="2" />
-        <Button basic color="green" onClick={addNote}>
+        <Form.Field
+          onChange={handleNoteChange}
+          label="add note for song"
+          value={note}
+          control="textarea"
+          rows="2"
+        />
+        <Button basic color="green" onClick={handleAddNote}>
           <Link>Add</Link>
         </Button>
       </Form>
+
+      <div>
+        <Table singleLine>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Date</Table.HeaderCell>
+              <Table.HeaderCell>Note</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>{song.note.createdAt}</Table.Cell>
+              <Table.Cell>{song.note.noteText}</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
     </div>
 
     //     <Card>

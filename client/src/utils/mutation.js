@@ -59,3 +59,21 @@ export const REMOVE_SONG = gql`
     }
   }
 `;
+
+export const ADD_NOTE = gql`
+  mutation Mutation($noteText: String!, $songId: ID) {
+    addNote(noteText: $noteText, songId: $songId) {
+      _id
+      artist
+      notes {
+        createdAt
+        noteText
+      }
+      title
+      category
+      image
+      lyrics
+      songId
+    }
+  }
+`;
