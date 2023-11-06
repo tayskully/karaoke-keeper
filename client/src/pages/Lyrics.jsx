@@ -83,13 +83,14 @@ const Lyrics = () => {
               <Table.HeaderCell>Note</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>{song.note.createdAt}</Table.Cell>
-              <Table.Cell>{song.note.noteText}</Table.Cell>
-            </Table.Row>
-          </Table.Body>
+          {song.notes.map((note, i) => (
+            <Table.Body>
+              <Table.Row key={i}>
+                <Table.Cell>{song.note?.noteText}</Table.Cell>
+                <Table.Cell>{song.note?.noteText}</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          ))}
         </Table>
       </div>
     </div>
