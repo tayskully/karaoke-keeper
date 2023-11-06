@@ -40,7 +40,7 @@ function Signup() {
   };
 
   return (
-    <div className="sign-up-form">
+    <div className="sign-up-form" style={{ display: 'flex', flexDirection: 'column' }}>
     {error && (
       <div>
         <h2>Make sure valid Password, at least 5 characters</h2>
