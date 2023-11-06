@@ -19,8 +19,8 @@ type Song {
 }
 
 type Note {
-  _id: ID
   noteText: String
+  createdAt: String
 }
 
 type Auth {
@@ -40,7 +40,7 @@ type Query {
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addSong(title: String!, artist: String, lyrics: String, category: String, image: String, songId: Int): Song
+    addSong(songId: Int): Song
     removeSong(songId: Int, userId: ID): Song
     addNote(songId: ID, noteText: String!): Song
   }

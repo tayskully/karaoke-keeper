@@ -62,20 +62,10 @@ const resolvers = {
       return { token, user };
     },
 
-    addSong: async (
-      parent,
-      { title, artist, lyrics, category, image, songId },
-      context
-    ) => {
+    addSong: async (parent, { songId }, context) => {
       if (context.user) {
-        const song = await Song.create({
-          songId,
-          title,
-          artist,
-          lyrics,
-          category,
-          image,
-        });
+        const songData = await getSongById(songId);
+        const song = await Song.create(songData);
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
