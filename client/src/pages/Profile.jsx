@@ -44,7 +44,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h2>Welcome, {me.username} !!</h2>
+      {Auth.loggedIn() && <h2>Welcome, {me.username} !!</h2>}
       <Grid stackable columns={3} divided>
         {loading ? (
           <div>Loading...</div>
