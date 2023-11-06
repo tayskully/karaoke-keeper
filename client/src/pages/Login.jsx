@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutation";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Message } from "semantic-ui-react";
 
 import Auth from "../utils/auth";
 
@@ -42,7 +42,8 @@ const Login = (props) => {
   };
 
   return (
-    <div className="login-form">
+    <div className="login-form" >
+      
     <Form onSubmit={handleFormSubmit}>
       <Form.Field>
         <label>Email</label>
@@ -66,6 +67,7 @@ const Login = (props) => {
       </Form.Field>
       <Button basic color='green' content='Green' type="submit">Submit</Button>
     </Form>
+    
     </div>
   );
 };
