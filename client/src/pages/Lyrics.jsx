@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { Button, Card, Icon, Image } from "semantic-ui-react";
+import { Button, Card, Icon, Image, Header } from "semantic-ui-react";
 import React from "react";
 // import { useEffect } from "react";
 
@@ -12,25 +12,28 @@ const Lyrics = () => {
   //   Use `useParams()` to retrieve value of the route parameter `:songId`
   const { songId } = useParams();
   // console.log(songId);
-  // parseInt because it takes Int 
-  const { loading, data } = useQuery(GET_SINGLE_SONG, {variables: { songId: parseInt(songId) }});
+  // parseInt because it takes Int
+  const { loading, data } = useQuery(GET_SINGLE_SONG, {
+    variables: { songId: parseInt(songId) },
+  });
 
   let song = data?.song || {};
-
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-
-
   return (
     <div>
-      <p> Title:{song.title}</p>
-      <p> title goes here</p>
+      {/* <Header size="large">{song.title}</Header> */}
+      <p
+        style={{ fontSize: "xx-large", marginTop: "1em", fontWeight: "bolder" }}
+      >
+        {song.title}
+      </p>
+
       <hr />
-      <p> Lyrics:{song.lyrics}</p>
-      <p> lyrics goes here</p>
+      <span style={{ whiteSpace: "pre-line" }}> Lyrics:{song.lyrics}</span>
     </div>
 
     //     <Card>
