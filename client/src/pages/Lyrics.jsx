@@ -62,36 +62,39 @@ const Lyrics = () => {
       <hr />
       <span style={{ whiteSpace: "pre-line" }}> Lyrics:{song.lyrics}</span>
 
-      <Form>
-        <Form.Field
-          onChange={handleNoteChange}
-          label="add note for song"
-          value={note}
-          control="textarea"
-          rows="2"
-        />
-        <Button basic color="green" onClick={handleAddNote}>
-          <Link>Add</Link>
-        </Button>
-      </Form>
+      <div className="comments-container">
+        <div className="comments">
+          <Form>
+            <Form.Field
+              onChange={handleNoteChange}
+              label="add note for song"
+              value={note}
+              control="textarea"
+              rows="2"
+              placeholder="add notes for song"
+            />
+            <Button basic color="green" onClick={handleAddNote}>
+              <Link>Add</Link>
+            </Button>
+          </Form>
 
-      <div>
-        <Table singleLine>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Date</Table.HeaderCell>
-              <Table.HeaderCell>Note</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          {song.notes.map((note, i) => (
-            <Table.Body>
-              <Table.Row key={i}>
-                <Table.Cell>{song.note?.noteText}</Table.Cell>
-                <Table.Cell>{song.note?.noteText}</Table.Cell>
+          <Table singleLine>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Date</Table.HeaderCell>
+                <Table.HeaderCell>Note</Table.HeaderCell>
               </Table.Row>
-            </Table.Body>
-          ))}
-        </Table>
+            </Table.Header>
+            {song.notes.map((note, i) => (
+              <Table.Body>
+                <Table.Row key={i}>
+                  <Table.Cell>{song.note?.noteText}</Table.Cell>
+                  <Table.Cell>{song.note?.noteText}</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            ))}
+          </Table>
+        </div>
       </div>
     </div>
 

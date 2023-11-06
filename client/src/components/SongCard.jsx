@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Button, Card, Image } from "semantic-ui-react";
-import "./SongCard.css";
 import { useState, useEffect } from "react";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import { ADD_SONG } from "../utils/mutation";
@@ -61,7 +60,9 @@ export default function SongCard({ song }) {
                 <Link to={`/songs/${song.songId}`}>view song 🎧</Link>
               </Button>
               {Auth.loggedIn() && (
-                <Button basic color="green" onClick={handleAddSong}><Link>{buttonText}</Link></Button>
+                <Button basic color="green" onClick={handleAddSong}>
+                  <Link>{buttonText}</Link>
+                </Button>
               )}
             </Card.Description>
           </Card.Content>
