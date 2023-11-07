@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 //put in dotenv
-const secret = process.env.SUPER_SECRET;
+// const secret = process.env.SUPER_SECRET;
+const secret = "mysecretssshhhhhhh";
 const expiration = "2h";
 
 module.exports = {
